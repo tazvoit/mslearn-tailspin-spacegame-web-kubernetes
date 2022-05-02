@@ -48,7 +48,7 @@ stages:
     displayName: 'Deploy job'
     pool:
       vmImage: 'ubuntu-20.04'
-    environment: 'spike.default'
+    environment: 'openshift-sandbox-jorge-medina-nuu-dev'
     variables:
     - group: Release
     strategy:
@@ -69,14 +69,14 @@ stages:
         action: createSecret
         secretName: $(imagePullSecret)
         dockerRegistryEndpoint: 'Container Registry Connection'
-        kubernetesServiceConnection: 'Kubernetes Cluster Connection'
-        namespace: 'default'
+        kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
+        namespace: 'jorge-medina-nuu-dev'
     - task: KubernetesManifest@0
       displayName: Deploy to Kubernetes cluster
       inputs:
         action: deploy
-        kubernetesServiceConnection: 'Kubernetes Cluster Connection'
-        namespace: 'default'
+        kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
+        namespace: 'jorge-medina-nuu-dev'
         manifests: |
           $(Pipeline.Workspace)/manifests/deployment.yml
           $(Pipeline.Workspace)/manifests/service.yml

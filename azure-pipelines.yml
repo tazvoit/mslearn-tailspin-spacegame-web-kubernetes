@@ -34,7 +34,7 @@ stages:
         buildContext: $(Build.Repository.LocalPath)
         repository: $(leaderboardRepository)
         dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.LeaderboardContainer/Dockerfile'
-        containerRegistry: 'dockerRegistryServiceConnection'
+        containerRegistry: 'dockerRegistryConnection'
         tags: |
           $(tag)
     - publish: '$(Build.SourcesDirectory)/manifests'
@@ -64,7 +64,7 @@ stages:
             inputs:
               action: createSecret
               secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: 'Container Registry Connection'
+              dockerRegistryEndpoint: 'dockerRegistryConnection'
               kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
               namespace: 'jorge-medina-nuu-dev'
           - task: KubernetesManifest@0

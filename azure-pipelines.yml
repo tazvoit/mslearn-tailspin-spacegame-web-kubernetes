@@ -6,7 +6,7 @@ variables:
   buildConfiguration: 'Release'
   webRepository: 'web'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'secret'
+  imagePullSecret: 'azure-sa-token-tqmq5'
 
 stages:
 - stage: 'Build'

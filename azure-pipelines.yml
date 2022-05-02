@@ -40,21 +40,23 @@ stages:
     - publish: '$(Build.SourcesDirectory)/manifests'
       artifact: manifests
           
+          
+          
 - stage: 'Deploy'
-  displayName: 'Deploy the container'
+  displayName: 'Deploy the containers'
   dependsOn: Build
   jobs:
-  - job: 'Deploy'
-    displayName: 'Deploy job'
+  - deployment: Deploy
+    displayName: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
-    environment : 'openshift-sandbox-jorge-medina-nuu-dev'
+    environment: 'openshift-sandbox-jorge-medina-nuu-dev'
     variables:
     - group: Release
     strategy:
       runOnce:
         deploy:
-          steps:
+          steps:          
           - download: current
             artifact: manifests
     steps:

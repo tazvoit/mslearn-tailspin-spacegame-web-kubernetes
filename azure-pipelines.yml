@@ -59,31 +59,30 @@ stages:
           steps:          
           - download: current
             artifact: manifests
-    steps:
-    - task: AzureWebAppContainer@1
-      inputs:
-       appName: $(WebAppName)
-       azureSubscription: 'Resource Manager - Tailspin - Space Game'
-       imageName: $(RegistryName)/$(webRepository):$(build.buildId)
-    - task: KubernetesManifest@0
-      displayName: Create imagePullSecret
-      inputs:
-        action: createSecret
-        secretName: $(imagePullSecret)
-        dockerRegistryEndpoint: 'Container Registry Connection'
-        kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
-        namespace: 'jorge-medina-nuu-dev'
-    - task: KubernetesManifest@0
-      displayName: Deploy to Kubernetes cluster
-      inputs:
-        action: deploy
-        kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
-        namespace: 'jorge-medina-nuu-dev'
-        manifests: |
-          $(Pipeline.Workspace)/manifests/deployment.yml
-          $(Pipeline.Workspace)/manifests/service.yml
-        imagePullSecrets: |
-          $(imagePullSecret)
-        containers: |
-          $(RegistryName)/$(webRepository):$(tag)
-          $(RegistryName)/$(leaderboardRepository):$(tag)
+          - task: AzureWebAppContainer@1
+            inputs:
+             appName: $(WebAppName)
+             azureSubscription: 'Resource Manager - Tailspin - Space Game'
+             imageName: $(RegistryName)/$(webRepository):$(build.buildId)
+          - task: KubernetesManifest@0
+            displayName: Create imagePullSecret
+            inputs:
+              action: createSecret
+              secretName: $(imagePullSecret)
+              dockerRegistryEndpoint: 'Container Registry Connection'
+              kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
+              namespace: 'jorge-medina-nuu-dev'
+          - task: KubernetesManifest@0
+            displayName: Deploy to Kubernetes cluster
+            inputs:
+              action: deploy
+              kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
+              namespace: 'jorge-medina-nuu-dev'
+              manifests: |
+                $(Pipeline.Workspace)/manifests/deployment.yml
+                $(Pipeline.Workspace)/manifests/service.yml
+              imagePullSecrets: |
+                $(imagePullSecret)
+              containers: |
+                $(RegistryName)/$(webRepository):$(tag)
+                $(RegistryName)/$(leaderboardRepository):$(tag)

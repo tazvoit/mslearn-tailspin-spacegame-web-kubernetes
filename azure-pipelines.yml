@@ -1,9 +1,12 @@
-trigger: none
+trigger:
+- 'main'
 
 variables:
+  leaderboardRepository: 'leaderboard'
   buildConfiguration: 'Release'
   webRepository: 'web'
   tag: '$(Build.BuildId)'
+  imagePullSecret: 'secret'
 
 stages:
 - stage: 'Build'

@@ -15,7 +15,8 @@ stages:
   jobs:  
   - job: 'Build'
     displayName: 'Build job'
-    pool:
+    pool: 
+      name: default
       vmImage: 'ubuntu-20.04'
     steps:
     - task: Docker@2
@@ -50,6 +51,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     pool:
+      name: default
       vmImage: 'ubuntu-20.04'
     environment: 'openshift-sandbox'
     variables:

@@ -25,7 +25,7 @@ stages:
         buildContext: $(Build.Repository.LocalPath)
         repository: $(webRepository)
         dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
-        containerRegistry: 'dockerRegistryConnection'
+        containerRegistry: 'registry-azure'
         tags: |
           $(tag)
     - task: Docker@2
@@ -35,7 +35,7 @@ stages:
         buildContext: $(Build.Repository.LocalPath)
         repository: $(leaderboardRepository)
         dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.LeaderboardContainer/Dockerfile'
-        containerRegistry: 'dockerRegistryConnection'
+        containerRegistry: 'registry-azure'
         tags: |
           $(tag)
     - publish: '$(Build.SourcesDirectory)/manifests'

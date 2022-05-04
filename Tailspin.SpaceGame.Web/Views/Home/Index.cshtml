@@ -33,7 +33,7 @@
         <a name="leaderboard"></a>
         <h2>Space leaders</h2>
 
-        @if (Model.ErrorMessage == null)
+        @if (Model != null && Model.ErrorMessage == null )
         {
             <!-- Start Leaderboard table -->
             <div class="row">

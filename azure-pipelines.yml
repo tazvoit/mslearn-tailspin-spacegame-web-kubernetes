@@ -29,7 +29,7 @@ stages:
       inputs:
         command: buildAndPush
         buildContext: $(Build.Repository.LocalPath)
-        repository: tazvoit/workshop/$(webRepository)
+        repository: tazvoit/$(webRepository)
         dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
         containerRegistry: 'dockerRegistryConnection'
         tags: |
@@ -39,16 +39,14 @@ stages:
       inputs:
         command: buildAndPush
         buildContext: $(Build.Repository.LocalPath)
-        repository: tazvoit/workshop/$(leaderboardRepository)
+        repository: tazvoit/$(leaderboardRepository)
         dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.LeaderboardContainer/Dockerfile'
         containerRegistry: 'dockerRegistryConnection'
         tags: |
           $(tag)
     - publish: '$(Build.SourcesDirectory)/manifests'
       artifact: manifests
-          
-          
-          
+      
 - stage: 'Deploy'
   displayName: 'Deploy the containers'
   dependsOn: Build

@@ -7,7 +7,7 @@ variables:
   buildConfiguration: 'Release'
   webRepository: 'web'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'azure-sa-token-tqmq5'
+  imagePullSecret: 'azure-sa-token-tbb4v'
 
 stages:
 - stage: 'Build'
@@ -68,13 +68,13 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: 'dockerRegistryConnection'
-              kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
+              kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-dev'
               namespace: 'jorge-medina-nuu-dev'
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
-              kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-nuu-dev-1651511824715'
+              kubernetesServiceConnection: 'openshift-sandbox-jorge-medina-dev'
               namespace: 'jorge-medina-nuu-dev'
               manifests: |
                 $(Pipeline.Workspace)/manifests/deployment.yml

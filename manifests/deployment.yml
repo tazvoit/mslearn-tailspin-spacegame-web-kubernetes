@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: tazvoit/workshop/web
+          image: tazvoit/web
           ports:
           - containerPort: 8080
 ---
@@ -34,6 +34,6 @@ spec:
     spec:
       containers:
         - name: leaderboard
-          image: tazvoit/workshop/leaderboard
+          image: tazvoit/leaderboard
           ports:
           - containerPort: 8080

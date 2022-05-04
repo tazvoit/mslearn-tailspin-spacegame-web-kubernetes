@@ -15,7 +15,7 @@ stages:
 - stage: 'Analysis'
   displayName: 'Prepare Analysis Configuration' 
   jobs:
-  - job: 'Prepare Analysis Configuration'
+  - job: 'Analysis'
     displayName: 'Prepare Analysis Configuration'
     pool:
      name: default

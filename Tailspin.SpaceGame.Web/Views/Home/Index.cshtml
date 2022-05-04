@@ -27,24 +27,12 @@
     </div>
 </section>
 
-@{
-                                var totalPages = Model.TotalResults / Model.PageSize;
-                                if (Model.TotalResults % Model.PageSize != 0)
-                                {
-                                    totalPages++;
-                                }
+@if(!string.IsNullOrEmpty(Model.PageSize)) {
 
-                                for (int i = 1; i <= totalPages; i++)
-                                {
-                                    <li class="@(i == Model.Page ? "active" : null)">
-                                        <a href="@($"/?page={i}&pageSize={@Model.PageSize}&mode={@Model.SelectedMode}&region={@Model.SelectedRegion}")#leaderboard">
-                                            @i
-                                            <span class="sr-only">(current)</span>
-                                        </a>
-                                    </li>
-                                }
-                            }
+    <script>alert("@Model.TotalResults");</script>
+    <script>alert("@Model.PageSize");</script>
 
+}
 
 <!-- About section -->
 <section class="about">

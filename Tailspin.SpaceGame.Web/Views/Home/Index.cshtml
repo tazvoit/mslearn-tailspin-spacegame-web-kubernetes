@@ -27,6 +27,25 @@
     </div>
 </section>
 
+@{
+                                var totalPages = Model.TotalResults / Model.PageSize;
+                                if (Model.TotalResults % Model.PageSize != 0)
+                                {
+                                    totalPages++;
+                                }
+
+                                for (int i = 1; i <= totalPages; i++)
+                                {
+                                    <li class="@(i == Model.Page ? "active" : null)">
+                                        <a href="@($"/?page={i}&pageSize={@Model.PageSize}&mode={@Model.SelectedMode}&region={@Model.SelectedRegion}")#leaderboard">
+                                            @i
+                                            <span class="sr-only">(current)</span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+
 <!-- About section -->
 <section class="about">
     <h2>More about Space Game</h2>

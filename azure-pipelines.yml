@@ -10,6 +10,31 @@ variables:
   imagePullSecret: 'azure-sa-token-tbb4v'
 
 stages:
+- stage: 'Analysis'
+  displayName: 'Prepare Analysis Configuration' 
+  jobs:
+  - job: 'Prepare Analysis Configuration'
+    displayName: 'Prepare Analysis Configuration'
+    pool:
+     name: default
+     vmImage: 'ubuntu-20.04'
+    steps:
+    # Prepare Analysis Configuration task
+    - task: SonarQubeAnalyze@5
+      displayName: 'Sonaqube Analysis'
+      inputs:
+        SonarQube: 'sonarqube'
+        scannerMode: 'CLI'
+        configMode: 'manual'
+        cliProjectKey: $(Build.Repository.Name)
+        cliProjectName: $(Build.Repository.Name)
+        cliSources: '.'
+    # Run Code Analysis task
+    - task: SonarQubeAnalyze@5
+    # Publish Quality Gate Result task
+    - task: SonarQubePublish@5
+      inputs:
+        pollingTimeoutSec: '300'
 - stage: 'Build'
   displayName: 'Build and push'
   jobs:  

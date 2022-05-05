@@ -27,8 +27,8 @@ stages:
         SonarQube: 'sonarqube'
         scannerMode: 'CLI'
         configMode: 'manual'
-        cliProjectKey: "$(Build.Repository.Name)"
-        cliProjectName: "$(Build.DefinitionName)"
+        cliProjectKey: "test"
+        cliProjectName: "test"
         cliProjectVersion: "$(Build.BuildNumber)"
         cliSources: "."
     # Ejecutar Analisis

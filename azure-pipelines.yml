@@ -28,8 +28,10 @@ stages:
         SonarQube: 'sonarqube'
         scannerMode: 'CLI'
         configMode: 'manual'
+        #cliProjectKey: "$(Build.Repository.Name)"
+        #cliProjectName: "$(Build.Repository.Name)"
+        cliProjectName: "$(Build.DefinitionName)"
         cliProjectKey: "$(Build.DefinitionName)"
-        cliProjectName: "$(Build.Repository.Name)"
         cliProjectVersion: "$(Build.BuildNumber)"
         extraProperties: |
           sonar.branch.name=$(Build.SourceBranch)

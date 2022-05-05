@@ -27,7 +27,8 @@ stages:
         SonarQube: 'sonarqube'
         scannerMode: 'CLI'
         configMode: 'manual'
-        cliProjectKey: 'YourProjectKey'
+        cliProjectKey: "$(Build.Repository.Name)"
+        cliProjectName: "$(Build.Repository.Name)"
     # Ejecutar Analisis
     - task: SonarQubeAnalyze@5
     # Publish Quality Gate Result task

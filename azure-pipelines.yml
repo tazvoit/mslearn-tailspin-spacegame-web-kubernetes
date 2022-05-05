@@ -21,7 +21,14 @@ stages:
      name: default
      vmImage: 'ubuntu-20.04'
     steps:
-    # Run Code Analysis task
+    # Configurar Proyecto
+    - task: SonarQubePrepare@5
+      inputs:
+        SonarQube: 'sonarqube'
+        scannerMode: 'CLI'
+        configMode: 'manual'
+        cliProjectKey: 'YourProjectKey'
+    # Ejecutar Analisis
     - task: SonarQubeAnalyze@5
     # Publish Quality Gate Result task
     - task: SonarQubePublish@5

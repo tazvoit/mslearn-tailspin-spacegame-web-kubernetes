@@ -10,7 +10,6 @@ variables:
   imagePullSecret: 'azure-sa-token-tbb4v'
   SONAR_SCANNER_OPTS: -Xmx2048m
   NODE_OPTIONS: --max-old-space-size=4096
-  sonar.branch.name: 'master'
 
 stages:
 - stage: 'Analysis'
@@ -35,8 +34,7 @@ stages:
         cliProjectVersion: "$(Build.BuildNumber)"
         cliSources: '.'
         extraProperties: |
-          sonar.branch.name=$(Build.SourceBranch)
-          sonar.branch.target=$(Build.SourceBranch)
+          sonar.javascript.node.maxspace=4096
         
     # Ejecutar Analisis
     - task: SonarQubeAnalyze@5

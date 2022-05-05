@@ -28,7 +28,7 @@ stages:
         SonarQube: 'sonarqube'
         scannerMode: 'CLI'
         configMode: 'manual'
-        cliProjectKey: "$(Build.Repository.Name)"
+        cliProjectKey: "$(Build.DefinitionName)"
         cliProjectName: "$(Build.Repository.Name)"
         cliProjectVersion: "$(Build.BuildNumber)"
         cliSources: "."

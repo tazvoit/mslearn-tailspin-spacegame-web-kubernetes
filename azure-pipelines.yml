@@ -34,8 +34,9 @@ stages:
         cliProjectKey: "$(Build.DefinitionName)"
         cliProjectVersion: "$(Build.BuildNumber)"
         cliSources: '.'
-        #extraProperties: |
-        #  sonar.branch.name=$(Build.SourceBranch)
+        extraProperties: |
+          sonar.branch.name=$(Build.SourceBranch)
+          sonar.branch.target=$(Build.SourceBranch)
         
     # Ejecutar Analisis
     - task: SonarQubeAnalyze@5

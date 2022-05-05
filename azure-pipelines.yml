@@ -28,9 +28,9 @@ stages:
         scannerMode: 'CLI'
         configMode: 'manual'
         cliProjectKey: "$(Build.Repository.Name)"
-        cliProjectName: "$(Build.Repository.Name)"
+        cliProjectName: "$(Build.DefinitionName)"
         cliProjectVersion: "$(Build.BuildNumber)"
-        cliSources: ./
+        cliSources: "."
     # Ejecutar Analisis
     - task: SonarQubeAnalyze@5
     # Publish Quality Gate Result task

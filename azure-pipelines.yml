@@ -10,6 +10,7 @@ variables:
   imagePullSecret: 'azure-sa-token-tbb4v'
   SONAR_SCANNER_OPTS: -Xmx2048m
   NODE_OPTIONS: --max-old-space-size=4096
+  sonar.branch.name: 'master'
 
 stages:
 - stage: 'Analysis'

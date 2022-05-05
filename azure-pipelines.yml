@@ -32,6 +32,9 @@ stages:
         cliProjectName: "test"
         cliProjectVersion: "$(Build.BuildNumber)"
         cliSources: "."
+        extraProperties: |
+          sonar.branch.name: 'master'
+        
     # Ejecutar Analisis
     - task: SonarQubeAnalyze@5
     # Publish Quality Gate Result task

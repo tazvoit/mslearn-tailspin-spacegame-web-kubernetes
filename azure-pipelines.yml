@@ -31,7 +31,7 @@ stages:
         cliProjectKey: "$(Build.Repository.Name)"
         cliProjectName: "$(Build.Repository.Name)"
         cliProjectVersion: "$(Build.BuildNumber)"
-        cliSources: "./"
+        cliSources: "."
         extraProperties: |
           sonar.branch.name: '$(Build.SourceBranch)'
         

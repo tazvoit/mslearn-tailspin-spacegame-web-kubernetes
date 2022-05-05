@@ -33,6 +33,7 @@ stages:
         cliProjectName: "$(Build.DefinitionName)"
         cliProjectKey: "$(Build.DefinitionName)"
         cliProjectVersion: "$(Build.BuildNumber)"
+        cliSources: '$(System.DefaultWorkingDirectory)/$(Build.Repository.Name)'
         #extraProperties: |
         #  sonar.branch.name=$(Build.SourceBranch)
         
